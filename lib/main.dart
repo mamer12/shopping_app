@@ -23,6 +23,6 @@ class MyApp extends StatelessWidget {
                 iconTheme:
                     IconThemeData(color: GlobalVariables.secondaryColor))),
         onGenerateRoute: (settings) => genrateRoute(settings),
-        home: AuthScreen());
+        home: const AuthScreen());
   }
 }

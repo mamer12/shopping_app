@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/common/widgets/custom_button.dart';
 import 'package:shopping_app/common/widgets/custom_textField.dart';
+import 'package:shopping_app/features/services/auth_service.dart';
 
 import '../../constatns/global_var.dart';
 
@@ -21,15 +22,25 @@ class _AuthScreenState extends State<AuthScreen> {
   Auth _auth = Auth.signup;
   final _signUpFromKey = GlobalKey<FormState>();
   final _signinFromKey = GlobalKey<FormState>();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final AuthService authService = AuthService();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   @override
   void dispose() {
     super.dispose();
     _emailController.dispose();
     _nameController.dispose();
     _passwordController.dispose();
+  }
+
+  void signUpUser() {
+    authService.signUpUser(
+        context: context,
+        email: _emailController.text,
+        name: _nameController.text,
+        password: _passwordController.text);
   }
 
   @override
@@ -93,7 +104,13 @@ class _AuthScreenState extends State<AuthScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      CustomButton(text: "Sign up", onTap: () {})
+                      CustomButton(
+                          text: "Sign up",
+                          onTap: () {
+                            if (_signUpFromKey.currentState!.validate()) {
+                              signUpUser();
+                            }
+                          })
                     ],
                   ),
                 ),
@@ -121,7 +138,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 color: GlobalVariables.backgroundColor,
                 padding: const EdgeInsets.all(8),
                 child: Form(
-                  key: _signUpFromKey,
+                  key: _signinFromKey,
                   child: Column(
                     children: [
                       CustomTextField(
