@@ -1,9 +1,12 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_app/features/widgets/address_box.dart';
+import 'package:shopping_app/features/widgets/carousel_image.dart';
 import 'package:shopping_app/provieders/user_provider.dart';
 
 import '../../../constatns/global_var.dart';
+import '../../widgets/top_cateogries.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "/home";
@@ -79,8 +82,13 @@ class _HomeScreenState extends State<HomeScreen> {
           children: const [
             AddressBox(),
             SizedBox(
-              height: 10,
-            )
+              height: 20,
+            ),
+            CarouselImage(),
+            SizedBox(
+              height: 20,
+            ),
+            TopCategories(),
           ],
         ));
   }

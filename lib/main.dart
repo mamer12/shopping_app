@@ -4,7 +4,6 @@ import 'package:shopping_app/common/widgets/bottom_bar.dart';
 import 'package:shopping_app/constatns/global_var.dart';
 import 'package:shopping_app/features/auth/screens/auth_screen.dart';
 import 'package:shopping_app/features/auth/services/auth_service.dart';
-import 'package:shopping_app/features/home/screens/home_screen.dart';
 import 'package:shopping_app/provieders/user_provider.dart';
 import 'package:shopping_app/router.dart';
 
@@ -44,7 +43,7 @@ class _MyAppState extends State<MyApp> {
                     IconThemeData(color: GlobalVariables.secondaryColor))),
         onGenerateRoute: (settings) => genrateRoute(settings),
         home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-            ? BottomBar()
+            ? const BottomBar()
             : const AuthScreen());
   }
 }

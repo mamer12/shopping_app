@@ -13,7 +13,7 @@ Route<dynamic> genrateRoute(RouteSettings routeSetting) {
           settings: routeSetting, builder: (_) => const HomeScreen());
     case BottomBar.routeName:
       return MaterialPageRoute(
-          settings: routeSetting, builder: (_) => BottomBar());
+          settings: routeSetting, builder: (_) => const BottomBar());
     default:
       return MaterialPageRoute(
           settings: routeSetting,

@@ -6,7 +6,7 @@ import 'package:shopping_app/features/home/screens/home_screen.dart';
 
 class BottomBar extends StatefulWidget {
   static const String routeName = '/actual-home';
-  BottomBar({Key? key}) : super(key: key);
+  const BottomBar({Key? key}) : super(key: key);
 
   @override
   State<BottomBar> createState() => _BottomBarState();

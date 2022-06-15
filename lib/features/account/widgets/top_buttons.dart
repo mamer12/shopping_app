@@ -14,7 +14,7 @@ class TopButtins extends StatelessWidget {
             AccountButton(text: "Turn Seller", onTap: () {})
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Row(
