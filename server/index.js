@@ -2,6 +2,7 @@
 const express = require("express");
 const authRouter = require("./routes/auth.js");
 const mongoose = require("mongoose");
+const adminRouter = require("./routes/admin.js");
 // INIT
 const app = express();
 const IP = "192.168.1.8";
@@ -11,6 +12,7 @@ const DB =
 // Middledware
 app.use(express.json());
 app.use(authRouter);
+app.use(adminRouter);
 // Connections
 mongoose
   .connect(DB)
