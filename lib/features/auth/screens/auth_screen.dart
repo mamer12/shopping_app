@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/common/widgets/custom_button.dart';
 import 'package:shopping_app/common/widgets/custom_textField.dart';
-import 'package:shopping_app/features/services/auth_service.dart';
+import 'package:shopping_app/features/auth/services/auth_service.dart';
 
-import '../../constatns/global_var.dart';
+import '../../../constatns/global_var.dart';
 
 enum Auth {
   signin,

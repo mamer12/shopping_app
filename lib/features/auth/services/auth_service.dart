@@ -1,11 +1,17 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shopping_app/common/widgets/bottom_bar.dart';
 import 'package:shopping_app/constatns/error_handling.dart';
 import 'package:shopping_app/constatns/global_var.dart';
 import 'package:shopping_app/constatns/utils.dart';
-import '../../models/user.dart';
+import 'package:shopping_app/features/home/screens/home_screen.dart';
+import 'package:shopping_app/provieders/user_provider.dart';
 import 'package:http/http.dart' as http;
+
+import '../../../models/user.dart';
 
 class AuthService {
   // sign up user
@@ -67,8 +73,53 @@ class AuthService {
       httpErrorHandle(
         response: res,
         context: context,
-        onSuccess: () {},
+        onSuccess: () async {
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          Provider.of<UserProvider>(context, listen: false).setUser(res.body);
+          await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
+          Navigator.pushNamedAndRemoveUntil(
+              context, BottomBar.routeName, (route) => false);
+        },
       );
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
+
+// get user data
+  void getUserData(
+    BuildContext context,
+  ) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('x-auth-token');
+
+      if (token == null) {
+        prefs.setString('x-auth-token', '');
+      }
+
+      var tokenRes = await http.post(
+        Uri.parse('$uri/tokenIsValid'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'x-auth-token': token!
+        },
+      );
+
+      var response = jsonDecode(tokenRes.body);
+
+      if (response == true) {
+        http.Response userRes = await http.get(
+          Uri.parse('$uri/'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'x-auth-token': token
+          },
+        );
+
+        var userProvider = Provider.of<UserProvider>(context, listen: false);
+        userProvider.setUser(userRes.body);
+      }
     } catch (e) {
       showSnackBar(context, e.toString());
     }

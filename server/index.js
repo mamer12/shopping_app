@@ -4,6 +4,7 @@ const authRouter = require("./routes/auth.js");
 const mongoose = require("mongoose");
 // INIT
 const app = express();
+const IP = "192.168.1.8";
 const PORT = 3000;
 const DB =
   "mongodb+srv://ma_mer12:Mustfaamer12@cluster0.hy5zp.mongodb.net/?retryWrites=true&w=majority";
