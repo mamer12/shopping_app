@@ -43,5 +43,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>We want an Image for product!</string>
 </dict>
 </plist>

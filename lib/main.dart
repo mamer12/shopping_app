@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_app/common/widgets/bottom_bar.dart';
 import 'package:shopping_app/constatns/global_var.dart';
+import 'package:shopping_app/features/admin/screens/admin_screen.dart';
 import 'package:shopping_app/features/auth/screens/auth_screen.dart';
 import 'package:shopping_app/features/auth/services/auth_service.dart';
 import 'package:shopping_app/provieders/user_provider.dart';
@@ -32,18 +33,21 @@ class _MyAppState extends State<MyApp> {
 
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Shopping app',
-        theme: ThemeData(
-            scaffoldBackgroundColor: GlobalVariables.backgroundColor,
-            colorScheme: const ColorScheme.light(
-                primary: GlobalVariables.secondaryColor),
-            appBarTheme: const AppBarTheme(
-                elevation: 3,
-                iconTheme:
-                    IconThemeData(color: GlobalVariables.secondaryColor))),
-        onGenerateRoute: (settings) => genrateRoute(settings),
-        home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-            ? const BottomBar()
-            : const AuthScreen());
+      debugShowCheckedModeBanner: false,
+      title: 'Shopping app',
+      theme: ThemeData(
+          scaffoldBackgroundColor: GlobalVariables.backgroundColor,
+          colorScheme:
+              const ColorScheme.light(primary: GlobalVariables.secondaryColor),
+          appBarTheme: const AppBarTheme(
+              elevation: 3,
+              iconTheme: IconThemeData(color: GlobalVariables.secondaryColor))),
+      onGenerateRoute: (settings) => genrateRoute(settings),
+      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
+          ? Provider.of<UserProvider>(context).user.type == 'user'
+              ? const BottomBar()
+              : const AdminScreen()
+          : const AuthScreen(),
+    );
   }
 }
