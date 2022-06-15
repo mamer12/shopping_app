@@ -76,7 +76,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ]),
             )),
         body: Column(
-          children: const [AddressBox()],
+          children: const [
+            AddressBox(),
+            SizedBox(
+              height: 10,
+            )
+          ],
         ));
   }
 }
