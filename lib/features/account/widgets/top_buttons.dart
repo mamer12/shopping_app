@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/features/account/widgets/account_button.dart';
 
-class TopButtins extends StatelessWidget {
-  const TopButtins({Key? key}) : super(key: key);
+import '../services/account_services.dart';
+
+class TopButtons extends StatelessWidget {
+  const TopButtons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,10 @@ class TopButtins extends StatelessWidget {
         ),
         Row(
           children: [
-            AccountButton(text: "Log Out", onTap: () {}),
+            AccountButton(
+              text: "Log Out",
+              onTap: () => AccountServices().logOut(context),
+            ),
             AccountButton(text: "your Wishlist", onTap: () {})
           ],
         )

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/common/stars.dart';
+import 'package:shopping_app/common/widgets/stars.dart';
 
 import '../../models/product.dart';
 

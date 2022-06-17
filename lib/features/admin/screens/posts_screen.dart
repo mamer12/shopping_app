@@ -68,9 +68,9 @@ class _PostsScreenState extends State<PostsScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15.0),
-                            child: Expanded(
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
                               child: Text(
                                 productData.name,
                                 overflow: TextOverflow.ellipsis,

@@ -7,6 +7,9 @@ import 'package:shopping_app/features/home/screens/home_screen.dart';
 import 'package:shopping_app/features/home/search/screens/search_screen.dart';
 import 'package:shopping_app/features/product_details/screens/porduct_details.dart';
 import 'package:shopping_app/models/product.dart';
+import 'features/address/screen/address.dart';
+import 'features/order_details.dart/screen/order_details.dart';
+import 'models/order.dart';
 
 Route<dynamic> genrateRoute(RouteSettings routeSetting) {
   switch (routeSetting.name) {
@@ -22,6 +25,14 @@ Route<dynamic> genrateRoute(RouteSettings routeSetting) {
     case AddProductScreen.routeName:
       return MaterialPageRoute(
           settings: routeSetting, builder: (_) => const AddProductScreen());
+    case AddressScreen.routeName:
+      var totalAmount = routeSetting.arguments as String;
+      return MaterialPageRoute(
+        settings: routeSetting,
+        builder: (_) => AddressScreen(
+          totalAmount: totalAmount,
+        ),
+      );
     case SearchScreen.routeName:
       var searchQuery = routeSetting.arguments as String;
       return MaterialPageRoute(
@@ -44,7 +55,14 @@ Route<dynamic> genrateRoute(RouteSettings routeSetting) {
           builder: (_) => ProductDetailScreen(
                 product: product,
               ));
-
+    case OrderDetailScreen.routeName:
+      var order = routeSetting.arguments as Order;
+      return MaterialPageRoute(
+        settings: routeSetting,
+        builder: (_) => OrderDetailScreen(
+          order: order,
+        ),
+      );
     default:
       return MaterialPageRoute(
           settings: routeSetting,

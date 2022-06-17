@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
-import '../../../common/stars.dart';
+import '../../../common/widgets/stars.dart';
 import '../../../common/widgets/custom_button.dart';
 import '../../../constatns/global_var.dart';
 import '../../../models/product.dart';
@@ -30,11 +30,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   double myRating = 0;
 
   @override
-  void navigateToSearchScreen(String query) {
-    Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
-  }
-
-  @override
   void initState() {
     super.initState();
     double totalRating = 0;
@@ -51,12 +46,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     }
   }
 
-  // void addToCart() {
-  //   productDetailsServices.addToCart(
-  //     context: context,
-  //     product: widget.product,
-  //   );
-  // }
+  void navigateToSearchScreen(String query) {
+    Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
+  }
+
+  void addToCart() {
+    productDetailsServices.addToCart(
+      context: context,
+      product: widget.product,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +145,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     widget.product.id!,
                   ),
                   Stars(
-                    rating: 4,
+                    rating: avgRating,
                   ),
                 ],
               ),
@@ -227,9 +226,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               padding: const EdgeInsets.all(10),
               child: CustomButton(
                 text: 'Add to Cart',
-                onTap: () {},
-                // onTap: addToCart,
-                color: const Color.fromARGB(255, 254, 168, 19),
+                onTap: addToCart,
+                color: const Color.fromRGBO(254, 216, 19, 1),
               ),
             ),
             const SizedBox(height: 10),

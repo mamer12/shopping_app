@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import '../constatns/global_var.dart';
+import '../../constatns/global_var.dart';
 
 class Stars extends StatelessWidget {
   final double rating;
