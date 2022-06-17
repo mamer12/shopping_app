@@ -42,6 +42,7 @@ class AdminServices {
         images: imageUrls,
         category: category,
         price: price,
+        rating: [],
       );
 
       http.Response res = await http.post(

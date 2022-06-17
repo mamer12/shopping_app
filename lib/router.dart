@@ -5,6 +5,8 @@ import 'package:shopping_app/features/auth/screens/auth_screen.dart';
 import 'package:shopping_app/features/home/screens/category_deals_screen.dart';
 import 'package:shopping_app/features/home/screens/home_screen.dart';
 import 'package:shopping_app/features/home/search/screens/search_screen.dart';
+import 'package:shopping_app/features/product_details/screens/porduct_details.dart';
+import 'package:shopping_app/models/product.dart';
 
 Route<dynamic> genrateRoute(RouteSettings routeSetting) {
   switch (routeSetting.name) {
@@ -35,6 +37,14 @@ Route<dynamic> genrateRoute(RouteSettings routeSetting) {
           builder: (_) => CategoryDealsScreen(
                 category: category,
               ));
+    case ProductDetailScreen.routeName:
+      var product = routeSetting.arguments as Product;
+      return MaterialPageRoute(
+          settings: routeSetting,
+          builder: (_) => ProductDetailScreen(
+                product: product,
+              ));
+
     default:
       return MaterialPageRoute(
           settings: routeSetting,

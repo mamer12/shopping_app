@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class SingleProduct extends StatelessWidget {
   final String image;
+
   const SingleProduct({Key? key, required this.image}) : super(key: key);
 
   @override
