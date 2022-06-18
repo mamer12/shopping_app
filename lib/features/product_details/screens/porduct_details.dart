@@ -122,12 +122,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   ),
                 ),
               ),
-              Container(
-                color: Colors.transparent,
-                height: 42,
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                child: const Icon(Icons.mic, color: Colors.black, size: 25),
-              ),
             ],
           ),
         ),
@@ -216,18 +210,24 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             ),
             Padding(
               padding: const EdgeInsets.all(10),
-              child: CustomButton(
-                text: 'Buy Now',
-                onTap: () {},
+              child: Container(
+                height: 50,
+                width: double.infinity,
+                child: CustomButton(
+                  text: 'Buy Now',
+                  onTap: () {},
+                ),
               ),
             ),
-            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.all(10),
-              child: CustomButton(
-                text: 'Add to Cart',
-                onTap: addToCart,
-                color: const Color.fromRGBO(254, 216, 19, 1),
+              child: Container(
+                height: 50,
+                width: double.infinity,
+                child: CustomButton(
+                  text: 'Add to Cart',
+                  onTap: addToCart,
+                ),
               ),
             ),
             const SizedBox(height: 10),

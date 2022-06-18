@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:getwidget/components/button/gf_button.dart';
+import 'package:getwidget/getwidget.dart';
+import 'package:shopping_app/constatns/global_var.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -13,18 +16,18 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return GFButton(
+      shape: GFButtonShape.pills,
+      blockButton: true,
+      fullWidthButton: true,
+      color: color == null ? GlobalVariables.secondaryColor : Colors.black,
       child: Text(
         text,
         style: TextStyle(
-          color: color == null ? Colors.white : Colors.black,
+          color: color == null ? Colors.white : color,
         ),
       ),
       onPressed: onTap,
-      style: ElevatedButton.styleFrom(
-        minimumSize: const Size(double.infinity, 50),
-        primary: color,
-      ),
     );
   }
 }

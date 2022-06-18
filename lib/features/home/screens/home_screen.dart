@@ -74,14 +74,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                           fontWeight: FontWeight.w500,
                                           fontSize: 17)),
                                 )))),
-                    Container(
-                        color: Colors.transparent,
-                        height: 42,
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
-                        child: const Icon(
-                          Icons.mic_outlined,
-                          color: Colors.white,
-                        ))
                   ]),
             )),
         body: SingleChildScrollView(

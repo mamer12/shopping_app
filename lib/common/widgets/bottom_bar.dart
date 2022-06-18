@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_app/constatns/global_var.dart';
 import 'package:shopping_app/features/account/screens/account_screen.dart';
@@ -37,62 +38,66 @@ class _BottomBarState extends State<BottomBar> {
     final userCartLen = context.watch<UserProvider>().user.cart.length;
     return Scaffold(
       body: pages[_page],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _page,
-        selectedItemColor: GlobalVariables.selectedNavBarColor,
-        unselectedItemColor: GlobalVariables.unselectedNavBarColor,
-        backgroundColor: GlobalVariables.backgroundColor,
-        iconSize: 28,
-        onTap: updatePage,
-        items: [
-          //HomePage
-          BottomNavigationBarItem(
-              icon: Container(
-                width: bottomBarwidth,
-                decoration: BoxDecoration(
-                    border: Border(
-                        top: BorderSide(
-                            color: _page == 0
-                                ? GlobalVariables.selectedNavBarColor
-                                : GlobalVariables.unselectedNavBarColor,
-                            width: bottomBarBorderwidth))),
-                child: const Icon(Icons.home),
-              ),
-              label: "home"),
-          //Account
-          BottomNavigationBarItem(
-              icon: Container(
-                width: bottomBarwidth,
-                decoration: BoxDecoration(
-                    border: Border(
-                        top: BorderSide(
-                            color: _page == 1
-                                ? GlobalVariables.selectedNavBarColor
-                                : GlobalVariables.unselectedNavBarColor,
-                            width: bottomBarBorderwidth))),
-                child: const Icon(Icons.person_outline_outlined),
-              ),
-              //Cart
-              label: "Person"),
-          BottomNavigationBarItem(
-              icon: Container(
-                width: bottomBarwidth,
-                decoration: BoxDecoration(
-                    border: Border(
-                        top: BorderSide(
-                            color: _page == 2
-                                ? GlobalVariables.selectedNavBarColor
-                                : GlobalVariables.unselectedNavBarColor,
-                            width: bottomBarBorderwidth))),
-                child: Badge(
-                    elevation: 0,
-                    badgeContent: Text(userCartLen.toString()),
-                    badgeColor: Colors.white,
-                    child: const Icon(Icons.shopping_bag_outlined)),
-              ),
-              label: "Cart")
-        ],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 20,
+              color: Colors.black.withOpacity(.1),
+            )
+          ],
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+            child: GNav(
+              rippleColor: Colors.grey[300]!,
+              hoverColor: GlobalVariables.backgroundColor,
+              gap: 8,
+              activeColor: GlobalVariables.backgroundColor,
+              iconSize: 24,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              duration: Duration(milliseconds: 400),
+              tabBackgroundColor: Colors.purple.shade300,
+              haptic: true,
+              color: Colors.black,
+              tabs: [
+                GButton(
+                  icon: Icons.home,
+                  text: 'Home',
+                  backgroundColor: Colors.red.shade300,
+                ),
+                GButton(
+                  icon: Icons.person,
+                  text: 'Profile',
+                  backgroundColor: Colors.black26,
+                ),
+                GButton(
+                  icon: Icons.shopping_bag_outlined,
+                  text: 'Cart',
+                  onPressed: () => {userCartLen.toString()},
+                ),
+              ],
+              selectedIndex: _page,
+              onTabChange: (index) {
+                setState(() {
+                  _page = index;
+                });
+              },
+            ),
+          ),
+        ),
       ),
     );
   }
 }
+
+
+                
+  // Badge(
+  //                   elevation: 0,
+  //                   badgeContent: Text(userCartLen.toString()),
+  //                   badgeColor: Colors.white,
+  //                   child: const Icon(Icons.shopping_bag_outlined)),
+  //             ),
