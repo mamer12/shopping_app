@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class SingleProduct extends StatelessWidget {
   final String image;
+
   const SingleProduct({Key? key, required this.image}) : super(key: key);
 
   @override
@@ -10,7 +11,7 @@ class SingleProduct extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 5),
         child: DecoratedBox(
           decoration: BoxDecoration(
-              border: Border.all(color: Colors.black, width: 1.5),
+              border: Border.all(color: Colors.black, width: 0.2),
               borderRadius: BorderRadius.circular(
                 5,
               ),

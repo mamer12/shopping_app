@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-String uri = 'http://192.168.1.4:3000';
+String uri = 'http://192.168.1.191:3000';
 
 class GlobalVariables {
   // COLORS
@@ -15,7 +15,7 @@ class GlobalVariables {
   static const secondaryColor = Color.fromARGB(255, 153, 0, 255);
   static const backgroundColor = Colors.white;
   static const Color greyBackgroundCOlor = Color(0xffebecee);
-  static var selectedNavBarColor = const Color.fromARGB(255, 131, 0, 143)!;
+  static var selectedNavBarColor = const Color.fromARGB(255, 131, 0, 143);
   static const unselectedNavBarColor = Colors.black87;
 
   // STATIC IMAGES
@@ -29,24 +29,24 @@ class GlobalVariables {
 
   static const List<Map<String, String>> categoryImages = [
     {
-      'title': 'Mobiles',
-      'image': 'assets/images/mobiles.jpeg',
+      'title': 'Essentials',
+      'image': 'assets/images/essentials.jpg',
     },
     {
-      'title': 'Essentials',
-      'image': 'assets/images/essentials.jpeg',
+      'title': 'mobiles',
+      'image': 'assets/images/mobiles.jpg',
     },
     {
       'title': 'Appliances',
-      'image': 'assets/images/appliances.jpeg',
+      'image': 'assets/images/appliances.jpg',
     },
     {
       'title': 'Books',
-      'image': 'assets/images/books.jpeg',
+      'image': 'assets/images/books.jpg',
     },
     {
       'title': 'Fashion',
-      'image': 'assets/images/fashion.jpeg',
+      'image': 'assets/images/fashion.jpg',
     },
   ];
 }

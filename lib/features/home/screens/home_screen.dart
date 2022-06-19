@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_app/features/widgets/address_box.dart';
+import 'package:shopping_app/features/widgets/carousel_image.dart';
+import 'package:shopping_app/features/widgets/deal_of_the_day.dart';
 import 'package:shopping_app/provieders/user_provider.dart';
 
 import '../../../constatns/global_var.dart';
+import '../../widgets/top_cateogries.dart';
+import '../search/screens/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "/home";
@@ -14,6 +18,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void navigateToSearchQuery(String query) {
+    Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;
@@ -37,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 borderRadius: BorderRadius.circular(7),
                                 elevation: 1,
                                 child: TextFormField(
+                                  onFieldSubmitted: navigateToSearchQuery,
                                   decoration: InputDecoration(
                                       prefixIcon: InkWell(
                                           onTap: () {},
@@ -65,23 +74,26 @@ class _HomeScreenState extends State<HomeScreen> {
                                           fontWeight: FontWeight.w500,
                                           fontSize: 17)),
                                 )))),
-                    Container(
-                        color: Colors.transparent,
-                        height: 42,
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
-                        child: const Icon(
-                          Icons.mic_outlined,
-                          color: Colors.white,
-                        ))
                   ]),
             )),
-        body: Column(
-          children: const [
-            AddressBox(),
-            SizedBox(
-              height: 10,
-            )
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: const [
+              AddressBox(),
+              SizedBox(
+                height: 20,
+              ),
+              CarouselImage(),
+              SizedBox(
+                height: 20,
+              ),
+              TopCategories(),
+              SizedBox(
+                height: 10,
+              ),
+              DealOfTheDay()
+            ],
+          ),
         ));
   }
 }
