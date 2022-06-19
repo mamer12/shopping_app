@@ -12,7 +12,6 @@ class CarouselImage extends StatelessWidget {
       aspectRatio: 3.0,
       initialPage: 0,
       activeIndicator: Colors.black,
-      hasPagination: true,
       autoPlay: true,
       enlargeMainPage: true,
       items: GlobalVariables.carouselImages.map(

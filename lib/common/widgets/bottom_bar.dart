@@ -24,8 +24,8 @@ class _BottomBarState extends State<BottomBar> {
 
   List<Widget> pages = [
     const HomeScreen(),
+    const CartScreen(),
     const AccountScreen(),
-    const CartScreen()
   ];
   void updatePage(int page) {
     setState(() {
@@ -59,24 +59,24 @@ class _BottomBarState extends State<BottomBar> {
               iconSize: 24,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               duration: Duration(milliseconds: 400),
-              tabBackgroundColor: Colors.purple.shade300,
+              tabBackgroundColor: Colors.purple.shade400,
               haptic: true,
               color: Colors.black,
               tabs: [
                 GButton(
                   icon: Icons.home,
                   text: 'Home',
-                  backgroundColor: Colors.red.shade300,
-                ),
-                GButton(
-                  icon: Icons.person,
-                  text: 'Profile',
-                  backgroundColor: Colors.black26,
+                  backgroundColor: Colors.red.shade400,
                 ),
                 GButton(
                   icon: Icons.shopping_bag_outlined,
                   text: 'Cart',
                   onPressed: () => {userCartLen.toString()},
+                ),
+                GButton(
+                  icon: Icons.person,
+                  text: 'Profile',
+                  backgroundColor: Colors.deepOrangeAccent,
                 ),
               ],
               selectedIndex: _page,
