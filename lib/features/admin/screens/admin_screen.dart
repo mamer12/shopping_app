@@ -1,7 +1,5 @@
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/features/admin/screens/posts_screen.dart';
-
 import '../../../constatns/global_var.dart';
 import 'orders_screen.dart';
 
