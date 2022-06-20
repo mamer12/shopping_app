@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../common/widgets/loader.dart';
 import '../../models/product.dart';
 import '../home/services/home_serivces.dart';
@@ -45,11 +46,13 @@ class _DealOfTheDayState extends State<DealOfTheDay> {
                 child: Column(
                   children: [
                     Container(
-                      alignment: Alignment.topLeft,
-                      padding: const EdgeInsets.only(left: 10, top: 15),
-                      child: const Text(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: Text(
                         'Deal of the day',
-                        style: TextStyle(fontSize: 20),
+                        style: GoogleFonts.getFont('Roboto',
+                            textStyle: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold)),
                       ),
                     ),
                     Image.network(

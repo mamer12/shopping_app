@@ -64,7 +64,7 @@ class _BottomBarState extends State<BottomBar> {
               color: Colors.black,
               tabs: [
                 GButton(
-                  icon: Icons.home,
+                  icon: Icons.home_outlined,
                   text: 'Home',
                   backgroundColor: Colors.red.shade400,
                 ),
@@ -74,7 +74,7 @@ class _BottomBarState extends State<BottomBar> {
                   onPressed: () => {userCartLen.toString()},
                 ),
                 GButton(
-                  icon: Icons.person,
+                  icon: Icons.person_outline,
                   text: 'Profile',
                   backgroundColor: Colors.deepOrangeAccent,
                 ),

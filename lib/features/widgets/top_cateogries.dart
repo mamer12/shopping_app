@@ -13,9 +13,9 @@ class TopCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80,
+      height: 100,
       child: ListView.builder(
-          itemExtent: 75,
+          itemExtent: 90,
           scrollDirection: Axis.horizontal,
           itemCount: GlobalVariables.categoryImages.length,
           itemBuilder: (context, index) {
@@ -31,8 +31,8 @@ class TopCategories extends StatelessWidget {
                       child: Image.asset(
                         GlobalVariables.categoryImages[index]['image']!,
                         fit: BoxFit.fill,
-                        height: 40,
-                        width: 40,
+                        height: 50,
+                        width: 50,
                       ),
                     ),
                   ),

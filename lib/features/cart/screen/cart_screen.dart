@@ -125,12 +125,11 @@ class _CartScreenState extends State<CartScreen> {
               },
             ),
             const CartSubtotal(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            Container(
+              height: 50,
               child: CustomButton(
                 text: 'Proceed to Buy (${user.cart.length} items)',
                 onTap: () => navigateToAddress(sum),
-                color: Colors.yellow[600],
               ),
             ),
           ],
