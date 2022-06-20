@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/features/admin/screens/posts_screen.dart';
 import '../../../constatns/global_var.dart';
+import '../../account/services/account_services.dart';
 import 'orders_screen.dart';
 
 class AdminScreen extends StatefulWidget {
@@ -18,9 +19,8 @@ class _AdminScreenState extends State<AdminScreen> {
   List<Widget> pages = [
     const PostsScreen(),
     const Center(
-      child: Text("data"),
+      child: Text("Comming Soon"),
     ),
-    const OrdersScreen(),
   ];
 
   void updatePage(int page) {
@@ -41,8 +41,15 @@ class _AdminScreenState extends State<AdminScreen> {
             ),
           ),
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              InkWell(
+                onTap: () => AccountServices().logOut(context),
+                child: Icon(
+                  Icons.logout_outlined,
+                  color: Colors.white,
+                ),
+              ),
               Container(
                 alignment: Alignment.topLeft,
                 // child: Image.asset(
@@ -113,25 +120,6 @@ class _AdminScreenState extends State<AdminScreen> {
             label: '',
           ),
           // ORDERS
-          BottomNavigationBarItem(
-            icon: Container(
-              width: bottomBarWidth,
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    color: _page == 2
-                        ? GlobalVariables.selectedNavBarColor
-                        : GlobalVariables.backgroundColor,
-                    width: bottomBarBorderWidth,
-                  ),
-                ),
-              ),
-              child: const Icon(
-                Icons.all_inbox_outlined,
-              ),
-            ),
-            label: '',
-          ),
         ],
       ),
     );
