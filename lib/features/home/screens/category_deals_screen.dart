@@ -59,19 +59,14 @@ class _CategoryDealsScreenState extends State<CategoryDealsScreen> {
                   alignment: Alignment.topLeft,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                  child: Text(
-                    "Keep Shopping for ${widget.category}",
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
                 ),
                 SizedBox(
-                    height: 170,
+                    height: 190,
                     child: GridView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: productList!.length,
                         padding: const EdgeInsets.only(
-                          left: 15,
+                          left: 25,
                         ),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
@@ -94,7 +89,7 @@ class _CategoryDealsScreenState extends State<CategoryDealsScreen> {
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                         color: Colors.black12,
-                                        width: 0.5,
+                                        width: 2,
                                       ),
                                     ),
                                     child: Padding(
@@ -105,18 +100,22 @@ class _CategoryDealsScreenState extends State<CategoryDealsScreen> {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  alignment: Alignment.topLeft,
-                                  padding: const EdgeInsets.only(
-                                    left: 0,
-                                    top: 5,
-                                    right: 15,
-                                  ),
-                                  child: Text(
-                                    product.name,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      product.name,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    Text(
+                                      "\$${product.price.toString()}",
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    )
+                                  ],
                                 ),
                               ],
                             ),
